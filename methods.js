@@ -6,8 +6,8 @@ class Utility {
                     if (typeof arg !== "string") {
                         return arg
                     } else {
-                        const _ = document.querySelectorAll(arg)
-                        return _.length > 1 ? _ : _[0]
+                        const elm = document.querySelectorAll(arg)
+                        return elm.length > 1 ? elm : elm[0]
                     }
                 })(),
                 on: function (type, func) {
@@ -20,15 +20,27 @@ class Utility {
                     }
                 },
                 css: function (object) {
-                    const string = Object.keys(object).reduce((united, only) => {
-                        return united + (only + ":" + object[only] + "; ")
-                    }, "")
-                    if (this._.length > 1) {
-                        this._.forEach((e) => {
-                            e.style = string
-                        })
+                    if (object.add || object.remove || object.toggle) {
+                        const type = Object.keys(object)[0]
+                        const value = object[type]
+                        if (this._.length > 1) {
+                            this._.forEach((e) => {
+                                e.classList[type](value)
+                            })
+                        } else {
+                            this._.classList[type](value)
+                        }
                     } else {
-                        this._.style = string
+                        const string = Object.keys(object).reduce((united, only) => {
+                            return united + (only + ":" + object[only] + "; ")
+                        }, "")
+                        if (this._.length > 1) {
+                            this._.forEach((e) => {
+                                e.style = string
+                            })
+                        } else {
+                            this._.style = string
+                        }
                     }
                 },
                 val: function (str) {
@@ -43,9 +55,7 @@ class Utility {
     }
 }
 const $ = new Utility().methods
-
 export { $ }
-
 
 
 

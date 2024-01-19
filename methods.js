@@ -20,8 +20,7 @@ class Utility {
                     }
                 },
                 css: function (object) {
-                    //Aplicação de estilo por meio do classList(add, remove, toggle).
-                    if (object.add || object.remove || object.toggle) {
+                    if (object.add || object.remove || object.toggle) {//classList
                         const type = Object.keys(object)[0]
                         const value = object[type]
                         if (this._.length > 1) {
@@ -31,7 +30,7 @@ class Utility {
                         } else {
                             this._.classList[type](value)
                         }
-                    } else { //Aplicação de estilo por meio do CSS inline. 
+                    } else { // CSS inline. 
                         const string = Object.keys(object).reduce((united, only) => {
                             return united + (only + ":" + object[only] + "; ")
                         }, "")

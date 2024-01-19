@@ -20,6 +20,7 @@ class Utility {
                     }
                 },
                 css: function (object) {
+                    //Aplicação de estilo por meio do classList(add, remove, toggle).
                     if (object.add || object.remove || object.toggle) {
                         const type = Object.keys(object)[0]
                         const value = object[type]
@@ -30,7 +31,7 @@ class Utility {
                         } else {
                             this._.classList[type](value)
                         }
-                    } else {
+                    } else { //Aplicação de estilo por meio do CSS inline. 
                         const string = Object.keys(object).reduce((united, only) => {
                             return united + (only + ":" + object[only] + "; ")
                         }, "")
@@ -48,6 +49,17 @@ class Utility {
                         return this._.innerText
                     } else {
                         return this._.value
+                    }
+                },
+                html: function (type) {
+                    if (type) {
+                        return (content) => {
+                            this._.innerHTML = content
+                        }
+                    } else {
+                        return (content) => {
+                            this._.innerText = content
+                        }
                     }
                 }
             }

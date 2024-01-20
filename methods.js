@@ -61,7 +61,7 @@ class Utility {
                         }
                     }
                 },
-                cssCarousel: function (object, elmt) {
+                style: function (object, elmt) {
                     const string = Object.keys(object).reduce((united, only) => {
                         return united + (only + ":" + object[only] + "; ")
                     }, "")
@@ -80,7 +80,7 @@ class Utility {
                     const width = Number(obj.width.replace("px", ""))
                     let idx = 0
                     //div container - que englopa toda a estrutura do carrossel.
-                    this.cssCarousel({
+                    this.style({
                         "display": "flex",
                         "width": obj.width,
                         "height": obj.height,
@@ -88,12 +88,12 @@ class Utility {
                         "border-radius": "3px"
                     }, container);
                     //div carousel - div que se movimenta.
-                    this.cssCarousel({
+                    this.style({
                         "display": "flex",
                         "transition": "1s all ease-in-out",
                     }, carousel);
                     //elm a - links da imagens que contem a tag img dentro.
-                    this.cssCarousel({
+                    this.style({
                         "display": "flex",
                         "width": obj.width,
                         "height": obj.height,
@@ -102,7 +102,7 @@ class Utility {
                     }, links)
                     //imagens do carrossel
                     for (let a of links) {
-                        this.cssCarousel({
+                        this.style({
                             "width": obj.width,
                             "height": obj.height
                         }, a.children[0])

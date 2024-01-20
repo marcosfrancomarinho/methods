@@ -10,13 +10,13 @@ class Utility {
                         return elm.length > 1 ? elm : elm[0]
                     }
                 })(),
-                on: function (type, func) {
+                on: function (event, func) {
                     if (this._.length > 1) {
                         this._.forEach((e) => {
-                            e.addEventListener(type, func)
+                            e.addEventListener(event, func)
                         })
                     } else {
-                        this._.addEventListener(type, func)
+                        this._.addEventListener(event, func)
                     }
                 },
                 css: function (object) {
@@ -77,15 +77,40 @@ class Utility {
                     const container = this._
                     const carousel = container.children[0]
                     const links = carousel.children
+                    const btnLeft = container.children[1]
+                    const btnRight = container.children[2]
                     const width = Number(obj.width.replace("px", ""))
+                    let size = obj.size == undefined ? "1rem" : obj.size + "rem"
                     let idx = 0
+                    const configBtn = {
+                        "position": "absolute",
+                        "top": "50%",
+                        "transform": "translate(0,-50%)",
+                        "cursor": "pointer",
+                        "padding": "14px",
+                        "border": "none",
+                        "outline": "none",
+                        "font-size": size,
+                        "border-radius": "3px",
+                        "opacity": "0.6",
+                        "font-weight": "900",
+                        "text-aling":"center",
+                        "height":"40px",
+                        "display":"flex",
+                        "align-items":"center",
+                        "justify-content":"center"
+                    }
+                    const transition = () => {
+                        carousel.style.transform = "translateX(" + (-width * idx) + "px)"
+                    }
                     //div container - que englopa toda a estrutura do carrossel.
                     this.style({
                         "display": "flex",
                         "width": obj.width,
                         "height": obj.height,
                         "overflow": "hidden",
-                        "border-radius": "3px"
+                        "border-radius": "3px",
+                        "position": "relative"
                     }, container);
                     //div carousel - div que se movimenta.
                     this.style({
@@ -98,7 +123,7 @@ class Utility {
                         "width": obj.width,
                         "height": obj.height,
                         "justify-content": "center",
-                        "align-item": "center"
+                        "align-item": "center",
                     }, links)
                     //imagens do carrossel
                     for (let a of links) {
@@ -107,14 +132,39 @@ class Utility {
                             "height": obj.height
                         }, a.children[0])
                     }
-                    //loop do carrossel
-                    setInterval(function () {
-                        if (idx >= links.length) {
-                            idx = 0
-                        }
-                        carousel.style.transform = `translateX(-${width * idx}px)`
+                    //loop do carrossel.
+                    const loop = (() => {
+                        setInterval(function () {
+                            if (idx >= links.length) {
+                                idx = 0
+                            }
+                            transition()
+                            idx++
+                        }, obj.time)
+                    })()
+                    // cnfiguração dos botões
+                    this.style({
+                        ...configBtn,
+                        "left": "5px",
+                    }, btnLeft)
+                    this.style({
+                        ...configBtn,
+                        "right": "5px",
+                    }, btnRight)
+                    // conteudo botões.
+                    const content = (() => {
+                        btnLeft.innerText = "❮"
+                        btnRight.innerText = "❯"
+                    })()
+                    //funções dos botões next & back
+                    btnLeft.onclick = () => {
+                        transition()
+                        idx--
+                    }
+                    btnRight.onclick = () => {
+                        transition()
                         idx++
-                    }, obj.time)
+                    }
                 }
             }
         }

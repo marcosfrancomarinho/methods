@@ -65,13 +65,7 @@ class Utility {
                     const string = Object.keys(object).reduce((united, only) => {
                         return united + (only + ":" + object[only] + "; ")
                     }, "")
-                    if (elmt.length > 1) {
-                        for (let e of elmt) {
-                            e.style = string
-                        }
-                    } else {
-                        elmt.style = string
-                    }
+                    elmt.style = string
                 },
                 carousel: function (obj) {
                     const container = this._
@@ -94,11 +88,11 @@ class Utility {
                         "border-radius": "3px",
                         "opacity": "0.6",
                         "font-weight": "900",
-                        "text-aling":"center",
-                        "height":"40px",
-                        "display":"flex",
-                        "align-items":"center",
-                        "justify-content":"center"
+                        "text-aling": "center",
+                        "height": "40px",
+                        "display": "flex",
+                        "align-items": "center",
+                        "justify-content": "center"
                     }
                     const transition = () => {
                         carousel.style.transform = "translateX(" + (-width * idx) + "px)"

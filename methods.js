@@ -93,7 +93,8 @@ class Utility {
                     "justify-content": "center",
                     "padding-inline": "0",
                     "border-radius": "100%",
-                    "text-shadow": "0.3px 0.3px white"
+                    "text-shadow": "0.3px 0.3px white",
+                    "transition":"all 0.6s"
                 }
                 const transition = () => {
                     carousel.style.transform = "translateX(" + (-width * idx) + "px)"

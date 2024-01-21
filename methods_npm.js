@@ -159,5 +159,4 @@ class Utility {
         }
     }
 }
-const $ = new Utility().methods
-export { $ }
+module.exports.$ = new Utility().methods

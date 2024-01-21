@@ -73,6 +73,8 @@ class Utility {
                 const width = Number.parseFloat(obj.width)
                 const size = obj.size === undefined ? "1.3rem" : obj.size + "rem"
                 const time = obj.time === undefined ? false : obj.time
+                const overflow = obj.scroll ? "auto" : "visible"
+                const display = obj.scroll ? "none" : "flex"
                 let idx = 0
                 const configBtn = {
                     "position": "absolute",
@@ -89,7 +91,7 @@ class Utility {
                     "text-aling": "center",
                     "height": "40px",
                     "min-width": "40px",
-                    "display": "flex",
+                    "display": display,
                     "align-items": "center",
                     "justify-content": "center",
                     "padding-inline": "0",
@@ -113,6 +115,7 @@ class Utility {
                 this.style({
                     "display": "flex",
                     "transition": "1s all ease-in-out",
+                    "overflow": overflow
                 }, carousel);
                 //elm a - links da imagens que contem a tag img dentro.
                 for (let a of links) {

@@ -69,9 +69,10 @@ class Utility {
                 const links = carousel.children
                 const btnLeft = container.children[1]
                 const btnRight = container.children[2]
-                const width = Number(obj.width.replace("px", ""))
-                let size = obj.size === undefined ? "1.3rem" : obj.size + "rem"
-                let time = obj.time === undefined ? false : obj.time
+                const measure = obj.width.substr(-2)//px-em-vw-vh-pt/ ñ => rem-%.
+                const width = Number.parseFloat(obj.width)
+                const size = obj.size === undefined ? "1.3rem" : obj.size + "rem"
+                const time = obj.time === undefined ? false : obj.time
                 let idx = 0
                 const configBtn = {
                     "position": "absolute",
@@ -94,10 +95,10 @@ class Utility {
                     "padding-inline": "0",
                     "border-radius": "100%",
                     "text-shadow": "0.3px 0.3px white",
-                    "transition":"all 0.6s"
+                    "transition": "all 0.6s"
                 }
                 const transition = () => {
-                    carousel.style.transform = "translateX(" + (-width * idx) + "px)"
+                    carousel.style.transform = "translateX(" + (-width * idx) + measure + ")"
                 }
                 //div container - que englopa toda a estrutura do carrossel.
                 this.style({

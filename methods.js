@@ -115,13 +115,15 @@ class Utility {
                     "transition": "1s all ease-in-out",
                 }, carousel);
                 //elm a - links da imagens que contem a tag img dentro.
-                this.style({
-                    "display": "flex",
-                    "width": obj.width,
-                    "height": obj.height,
-                    "justify-content": "center",
-                    "align-item": "center",
-                }, links)
+                for (let a of links) {
+                    this.style({
+                        "display": "flex",
+                        "width": obj.width,
+                        "height": obj.height,
+                        "justify-content": "center",
+                        "align-item": "center",
+                    }, a)
+                }
                 //imagens do carrossel
                 for (let a of links) {
                     this.style({

@@ -1,0 +1,19 @@
+{
+  "name": "methods",
+  "version": "1.0.0",
+  "description": "biblioteca com metodos para aplicação no frontend",
+  "main": "methods.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/marcosfrancomarinho/methods.git"
+  },
+  "author": "marcos marinho",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/marcosfrancomarinho/methods/issues"
+  },
+  "homepage": "https://github.com/marcosfrancomarinho/methods#readme"
+}

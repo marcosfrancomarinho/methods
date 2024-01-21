@@ -70,25 +70,29 @@ class Utility {
                 const btnLeft = container.children[1]
                 const btnRight = container.children[2]
                 const width = Number(obj.width.replace("px", ""))
-                let size = obj.size == undefined ? "1rem" : obj.size + "rem"
+                let size = obj.size == undefined ? "1.3rem" : obj.size + "rem"
                 let idx = 0
                 const configBtn = {
                     "position": "absolute",
                     "top": "50%",
                     "transform": "translate(0,-50%)",
                     "cursor": "pointer",
-                    "padding": "14px",
-                    "border": "none",
+                    "padding": "10px",
+                    "border": "1px inset rgba(255,255,255, 0.2)",
                     "outline": "none",
                     "font-size": size,
                     "border-radius": "3px",
-                    "opacity": "0.6",
+                    "background": "rgba(255,255,255, 0.3)",
                     "font-weight": "900",
                     "text-aling": "center",
                     "height": "40px",
+                    "min-width": "40px",
                     "display": "flex",
                     "align-items": "center",
-                    "justify-content": "center"
+                    "justify-content": "center",
+                    "padding-inline": "0",
+                    "border-radius": "100%",
+                    "text-shadow":"0.3px 0.3px white"
                 }
                 const transition = () => {
                     carousel.style.transform = "translateX(" + (-width * idx) + "px)"
@@ -146,14 +150,48 @@ class Utility {
                     btnRight.innerHTML = "&#10095"
                     btnLeft.innerHTML = "&#x276E;"
                 })()
+                btnLeft.onmouseenter = () => {
+                    this.style({
+                        ...configBtn,
+                        "left": "5px",
+                        "background": "rgba(255,255,255, 0.6)",
+                    }, btnLeft)
+                }
+                btnRight.onmouseenter = () => {
+                    this.style({
+                        ...configBtn,
+                        "right": "5px",
+                        "background": "rgba(255,255,255, 0.6)",
+                    }, btnRight)
+                }
+                btnLeft.onmouseout = () => {
+                    this.style({
+                        ...configBtn,
+                        "left": "5px",
+                        "background": "rgba(255,255,255, 0.3)",
+                    }, btnLeft)
+                }
+                btnRight.onmouseout = () => {
+                    this.style({
+                        ...configBtn,
+                        "right": "5px",
+                        "background": "rgba(255,255,255, 0.3)",
+                    }, btnRight)
+                }
                 //funções dos botões next & back
                 btnLeft.onclick = () => {
-                    transition()
                     idx--
+                    if (idx <= 0) {
+                        idx = 0
+                    }
+                    transition()
                 }
                 btnRight.onclick = () => {
-                    transition()
                     idx++
+                    if (idx >= links.length) {
+                        idx = 0
+                    }
+                    transition()
                 }
             }
         }

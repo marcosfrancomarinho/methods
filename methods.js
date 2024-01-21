@@ -4,10 +4,10 @@ class Utility {
             _: (function () {
                 if (typeof arg !== "string") {
                     return arg
-                } else {
-                    const elm = document.querySelectorAll(arg)
-                    return elm.length > 1 ? elm : elm[0]
                 }
+                const elm = document.querySelectorAll(arg)
+                return elm.length > 1 ? elm : elm[0]
+
             })(),
             on: function (event, func) {
                 if (this._.length > 1) {
@@ -45,19 +45,17 @@ class Utility {
             val: function (str) {
                 if (str === "text") {
                     return this._.innerText
-                } else {
-                    return this._.value
                 }
+                return this._.value
             },
             html: function (type) {
                 if (type) {
                     return (content) => {
                         this._.innerHTML = content
                     }
-                } else {
-                    return (content) => {
-                        this._.innerText = content
-                    }
+                }
+                return (content) => {
+                    this._.innerText = content
                 }
             },
             style: function (object, elmt) {

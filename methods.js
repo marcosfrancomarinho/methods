@@ -143,8 +143,8 @@ class Utility {
                 }, btnRight)
                 // conteudo botões.
                 const content = (() => {
-                    btnLeft.innerText = "❮"
-                    btnRight.innerText = "❯"
+                    btnRight.innerHTML = "&#10095"
+                    btnLeft.innerHTML = "&#x276E;"
                 })()
                 //funções dos botões next & back
                 btnLeft.onclick = () => {

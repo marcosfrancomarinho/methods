@@ -2,7 +2,7 @@
   "name": "methods",
   "version": "1.0.0",
   "description": "biblioteca com metodos para aplicação no frontend",
-  "main": "methods.js",
+  "main": "methods_mpm.js",
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

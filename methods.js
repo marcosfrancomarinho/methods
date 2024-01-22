@@ -71,10 +71,7 @@ class Utility {
                 const btnRight = container.children[2]
                 const measure = obj.width.substr(-2)//px-em-vw-vh-pt/ ñ => rem-%.
                 const width = Number.parseFloat(obj.width)
-                const size = obj.size === undefined ? "1.3rem" : obj.size + "rem"
                 const time = obj.time === undefined ? false : obj.time
-                const overflow = obj.scroll ? "auto" : "visible"
-                const display = obj.scroll ? "none" : "flex"
                 let idx = 0
                 const configBtn = {
                     "position": "absolute",
@@ -84,14 +81,14 @@ class Utility {
                     "padding": "10px",
                     "border": "1px inset rgba(255,255,255, 0.2)",
                     "outline": "none",
-                    "font-size": size,
+                    "font-size": obj.size === undefined ? "1.3rem" : obj.size + "rem",
                     "border-radius": "3px",
                     "background": "rgba(255,255,255, 0.3)",
                     "font-weight": "900",
                     "text-aling": "center",
                     "height": "40px",
                     "min-width": "40px",
-                    "display": display,
+                    "display": obj.scroll ? "none" : "flex",
                     "align-items": "center",
                     "justify-content": "center",
                     "padding-inline": "0",
@@ -115,7 +112,7 @@ class Utility {
                 this.style({
                     "display": "flex",
                     "transition": "1s all ease-in-out",
-                    "overflow": overflow
+                    "overflow": obj.scroll ? "auto" : "visible"
                 }, carousel);
                 //elm a - links da imagens que contem a tag img dentro.
                 for (let a of links) {

@@ -205,4 +205,4 @@ class Utility {
     }
 }
 const $ = new Utility().methods
-module.exports = $
+export { $ }

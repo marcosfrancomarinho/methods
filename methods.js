@@ -82,7 +82,6 @@ class Utility {
                     "border": "1px inset rgba(255,255,255, 0.2)",
                     "outline": "none",
                     "font-size": obj.size === undefined ? "1.3rem" : obj.size + "rem",
-                    "border-radius": "3px",
                     "background": "rgba(255,255,255, 0.3)",
                     "font-weight": "900",
                     "text-aling": "center",

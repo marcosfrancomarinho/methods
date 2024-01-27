@@ -44,6 +44,10 @@ class Utility {
             val: function (str) {
                 if (str === "text") {
                     return this._.innerText
+                } else if (str === "text-u") {
+                    return this._.innerText.toUpperCase()
+                } else if (str === "text-l") {
+                    return this._.innerText.toLowerCase()
                 }
                 return this._.value
             },
@@ -71,7 +75,7 @@ class Utility {
                 const btnRight = container.children[2]
                 const measure = obj.width.substr(-2)//px-em-vw-vh-pt/ ñ => rem-%.
                 const width = Number.parseFloat(obj.width)
-                const time = obj.time === undefined || obj.scroll ? false : obj.time
+                const time = obj.time === undefined ? false : obj.time
                 let idx = 0
                 const configBtn = {
                     "position": "absolute",
@@ -82,11 +86,12 @@ class Utility {
                     "border": "1px inset rgba(255,255,255, 0.2)",
                     "outline": "none",
                     "font-size": obj.size === undefined ? "1.3rem" : obj.size + "rem",
+                    "border-radius": "3px",
                     "background": "rgba(255,255,255, 0.3)",
                     "font-weight": "900",
                     "text-aling": "center",
-                    "height": obj.size === undefined ? "40px" : obj.size + 1 + "rem",
-                    "min-width": obj.size === undefined ? "40px" : obj.size + 1 + "rem",
+                    "height": "40px",
+                    "min-width": "40px",
                     "display": obj.scroll ? "none" : "flex",
                     "align-items": "center",
                     "justify-content": "center",
@@ -110,7 +115,7 @@ class Utility {
                 //div carousel - div que se movimenta.
                 this.style({
                     "display": "flex",
-                    "transition": "1.5s all ease-in-out",
+                    "transition": "1s all ease-in-out",
                     "overflow": obj.scroll ? "auto" : "visible"
                 }, carousel);
                 //elm a - links da imagens que contem a tag img dentro.
@@ -160,14 +165,14 @@ class Utility {
                     this.style({
                         ...configBtn,
                         "left": "5px",
-                        "background": "rgba(255,255,255, 0.8)",
+                        "background": "rgba(255,255,255, 0.6)",
                     }, btnLeft)
                 }
                 btnRight.onmouseenter = () => {
                     this.style({
                         ...configBtn,
                         "right": "5px",
-                        "background": "rgba(255,255,255, 0.8)",
+                        "background": "rgba(255,255,255, 0.6)",
                     }, btnRight)
                 }
                 btnLeft.onmouseout = () => {

@@ -15,5 +15,9 @@
   "bugs": {
     "url": "https://github.com/marcosfrancomarinho/methods/issues"
   },
-  "homepage": "https://github.com/marcosfrancomarinho/methods#readme"
+  "homepage": "https://github.com/marcosfrancomarinho/methods#readme",
+  "keywords": [],
+  "dependencies": {
+    "browserify": "^17.0.0"
+  }
 }
